@@ -1,0 +1,27 @@
+I2C interface compatible with Philips I2C spec V 2.1
+All modes standard, fast and high speed are supported
+SDA and SCL are not pure open-drain
+
+2 adresses sont possibles 0x76 quand SDO est connecté au GND et 0x77 quand SDO est connecté à Vddio
+
+La valeur permantant d'identifié le composant lié aux 6 bits MSB du device ID soit 0x3B, à l'adresse 0xD0
+
+pour mettre en mode normal écrire dans le registre 0xF4 la valeur 0b11 au bit0 étanht le lsb, donc globalement faire un (val F5) | 0x3
+
+les registres détalonnages commance par 0xA1 et finnisse par 0x88 avec les 8 bits entièrement rempli
+
+
+pour lire la température lire les octets LSB et MSB aux registres 0xFB et 0xFA le format est en degré avec une résolution dépendant de osrs_t[2:0]
+Il est mieux d'utiliser une lecture par salve (burst read)
+pour les données on commence une salve de lecture du registre 0xF7 au 0xFC. On récupère une donnée non signé de 20 bit contenant la temp et la press.
+en standard resolution measurment time est de 11.5 ms en typical et 13.3 en max
+The timing for data readout in forced mode should be done so that the maximum measurement
+times are respected.
+The following transactions are supported:
+ Single byte write
+ multiple byte write (using pairs of register addresses and register data)
+ single byte read
+ multiple byte read (using a single register address which is auto-incremented)
+
+Pressions avec lsb et msb aux registre 0xF8 et 0xF7 en pascal 1 hPa = 10^2 Pa = 100 Pa = 100 N.m-2 
+fonction compensé page 22
