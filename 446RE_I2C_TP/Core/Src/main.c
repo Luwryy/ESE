@@ -106,12 +106,19 @@ int main(void)
   printf("reset done\r\n");
   bmp_id(&bmp280);
   printf("id done\r\n");
+  bmp_config(&bmp280);
+  printf("config done\r\n");
+  HAL_Delay(500);
+  bmp_calib_read(&bmp280);
+  printf("calib done\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  bmp_temp_read(&bmp280);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

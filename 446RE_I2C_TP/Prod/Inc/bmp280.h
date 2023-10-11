@@ -24,9 +24,16 @@ typedef struct bmp280_struct
 {
 	bmp280_reg_t 	registre;
 	uint8_t			buf[26];
-
+	uint8_t			id;
+	uint8_t			config;
+	uint8_t			calib[25];
+	int32_t			temp;
 } h_bmp280_t;
 
 void bmp_reset(h_bmp280_t * bmp280);
 void bmp_id(h_bmp280_t * bmp280);
+void bmp_config(h_bmp280_t * bmp280);
+void bmp_calib_read(h_bmp280_t * bmp280);
+void bmp_temp_read(h_bmp280_t * bmp280);
+int32_t bmp_compensate_T(h_bmp280_t * bmp280);
 
