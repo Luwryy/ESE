@@ -1,6 +1,8 @@
-../Prod/Src/bmp280.c:5:6:bmp_reset	2
-../Prod/Src/bmp280.c:14:6:bmp_id	3
-../Prod/Src/bmp280.c:35:6:bmp_config	3
-../Prod/Src/bmp280.c:48:6:bmp_calib_read	3
-../Prod/Src/bmp280.c:60:6:bmp_temp_read	7
-../Prod/Src/bmp280.c:99:9:bmp_compensate_T	1
+../Prod/Src/bmp280.c:7:6:bmp_reset	2
+../Prod/Src/bmp280.c:16:6:bmp_id	3
+../Prod/Src/bmp280.c:37:6:bmp_config	3
+../Prod/Src/bmp280.c:50:6:bmp_calib_read	3
+../Prod/Src/bmp280.c:62:6:bmp_temp_read	7
+../Prod/Src/bmp280.c:106:6:bmp_press_read	3
+../Prod/Src/bmp280.c:152:9:bmp_compensate_T	1
+../Prod/Src/bmp280.c:171:9:bmp_compensate_P	2

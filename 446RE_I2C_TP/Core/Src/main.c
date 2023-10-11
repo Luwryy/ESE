@@ -118,6 +118,7 @@ int main(void)
   while (1)
   {
 	  bmp_temp_read(&bmp280);
+	  bmp_press_read(&bmp280);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
