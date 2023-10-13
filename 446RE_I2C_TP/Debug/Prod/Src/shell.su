@@ -1,0 +1,4 @@
+../Prod/Src/shell.c:44:6:Shell_Init	16	static
+../Prod/Src/shell.c:76:6:Shell_Loop	104	static
+../Prod/Src/shell.c:148:6:HAL_UART_RxCpltCallback	16	static
+../Prod/Src/shell.c:155:5:number_interpretor	16	static

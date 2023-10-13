@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Prod/Src/bmp280.c 
+../Prod/Src/bmp280.c \
+../Prod/Src/shell.c 
 
 OBJS += \
-./Prod/Src/bmp280.o 
+./Prod/Src/bmp280.o \
+./Prod/Src/shell.o 
 
 C_DEPS += \
-./Prod/Src/bmp280.d 
+./Prod/Src/bmp280.d \
+./Prod/Src/shell.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ Prod/Src/%.o Prod/Src/%.su Prod/Src/%.cyclo: ../Prod/Src/%.c Prod/Src/subdir.mk
 clean: clean-Prod-2f-Src
 
 clean-Prod-2f-Src:
-	-$(RM) ./Prod/Src/bmp280.cyclo ./Prod/Src/bmp280.d ./Prod/Src/bmp280.o ./Prod/Src/bmp280.su
+	-$(RM) ./Prod/Src/bmp280.cyclo ./Prod/Src/bmp280.d ./Prod/Src/bmp280.o ./Prod/Src/bmp280.su ./Prod/Src/shell.cyclo ./Prod/Src/shell.d ./Prod/Src/shell.o ./Prod/Src/shell.su
 
 .PHONY: clean-Prod-2f-Src
 

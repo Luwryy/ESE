@@ -8,7 +8,7 @@ typedef enum bmp280_reg_enum
 	temp_xlsb   = 0xFC,
 	temp_lsb   	= 0xFB,
 	temp_msb  	= 0xFA,
-	press_xmsb	= 0xF9,
+	press_xlsb	= 0xF9,
 	press_lsb	= 0xF8,
 	press_msb	= 0xF7,
 	config		= 0xF5,
@@ -29,6 +29,8 @@ typedef struct bmp280_struct
 	uint8_t			calib[25];
 	int32_t			temp, press;
 } h_bmp280_t;
+
+extern h_bmp280_t bmp280;
 
 void bmp_reset(h_bmp280_t * bmp280);
 void bmp_id(h_bmp280_t * bmp280);

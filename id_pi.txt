@@ -1,0 +1,3 @@
+ssh guigui3@192.168.88.123
+user : guigui3
+mdp : guigui

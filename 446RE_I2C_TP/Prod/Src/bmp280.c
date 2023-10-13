@@ -95,11 +95,11 @@ void bmp_temp_read(h_bmp280_t * bmp280){
 	if(!HAL_I2C_Master_Receive(&hi2c1, (uint16_t) BMP280_ADDR<<1, bmp280->buf, 1, HAL_MAX_DELAY)){
 		bmp280->temp += ((int32_t)(bmp280->buf[0]))<<12;
 	}
-	printf("temp : %ld\r\n",bmp280->temp);
+	//printf("temp : %ld\r\n",bmp280->temp);
 
-	/*bmp280->temp = bmp_compensate_T(bmp280);
+	bmp280->temp = bmp_compensate_T(bmp280);
 
-	printf("celcius temp : %ld\r\n",bmp280->temp);*/
+	//printf("celcius temp : %ld\r\n",bmp280->temp);
 
 }
 
@@ -141,11 +141,11 @@ void bmp_press_read(h_bmp280_t * bmp280){
 		bmp280->press = (int32_t)((bmp280->buf[2]) >>4) + ((int32_t)(bmp280->buf[1]) <<4) + ((int32_t)(bmp280->buf[0]) <<12);
 	}
 
-	printf("press : %ld\r\n",bmp280->press);
+	//printf("press : %ld\r\n",bmp280->press);
 
-	/*bmp280->press = bmp_compensate_P(bmp280);
+	bmp280->press = bmp_compensate_P(bmp280);
 
-	printf("corrected press : %ld\r\n",bmp280->press);*/
+	//printf("corrected press : %ld\r\n",bmp280->press);
 
 }
 
