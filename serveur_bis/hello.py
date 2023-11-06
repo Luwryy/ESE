@@ -1,12 +1,16 @@
 #from flask import Flask
 #from flask import jsonify
 #from flask import abort
+import serial
 from flask import *
 import json
 
 app = Flask(__name__)
 
 welcome = 'welcome to ESE API'
+
+portNucleo = "/dev/ttyAMA0"
+nucleo64 = serial.Serial(portNucleo,115200, timeout=10)
 
 @app.route('/api/welcome/')
 def api_welcome() :
@@ -50,3 +54,10 @@ def api_request(path=None):
                 "data" : request.get_json(),
                 }
     return jsonify(resp)
+
+@app.route("/centre")
+def centre():
+    nucleo64.write("0".encode('utf-8'))
+    nucleo64.write("1".encode('utf-8'))
+    nucleo64.write("9".encode('utf-8'))
+    return '',204 
