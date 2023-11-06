@@ -117,7 +117,7 @@ int main(void)
   HAL_Delay(500);
   bmp_calib_read(&bmp280);
   printf("calib done\r\n");
-  /*
+
   HAL_CAN_Start(&hcan1);
   uint8_t CAN_TxData[CAN_DATA_LENGTH];
   CAN_TxHeaderTypeDef CAN_Header;
@@ -140,7 +140,7 @@ int main(void)
   CAN_Header.StdId = 0x061;
 
   CAN_TxData[0] = 45;
-  CAN_TxData[1] = 0; */
+  CAN_TxData[1] = 0;
 
   //bmp_temp_read(&bmp280);
   //bmp_press_read(&bmp280);    */
@@ -151,7 +151,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /*
+	  bmp_temp_read(&bmp280);
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)){
 
 	  }
@@ -159,10 +159,11 @@ int main(void)
 	  while( HAL_CAN_IsTxMessagePending(&hcan1, boiteAuLettre) ){
 		  printf("message CAN pas encore envoye \r\n");
 	  }
-	  CAN_TxData[0] += 10;
-	  CAN_TxData[0] = CAN_TxData[0] % 180;
-	  HAL_Delay(500);*/
-	  Shell_Loop();
+	  /*CAN_TxData[0] += 10;
+	  CAN_TxData[0] = CAN_TxData[0] % 180;*/
+	  CAN_TxData[0] = (uint8_t) ((bmp280.temp / 10) - 200);
+	  HAL_Delay(500);
+	  //Shell_Loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
