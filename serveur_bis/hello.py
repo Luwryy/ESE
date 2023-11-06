@@ -1,5 +1,7 @@
-from flask import Flask
-from flask import jsonify
+#from flask import Flask
+#from flask import jsonify
+#from flask import abort
+from flask import *
 import json
 
 app = Flask(__name__)
@@ -12,8 +14,11 @@ def api_welcome() :
 
 @app.route('/api/welcome<int:index>')
 def api_welcome_index(index) :
-    return json.dumps({"index": index,"val": welcome[index]}), {"Content-Type": "application/json"}
+    if (len(welcome) <= (index)) :
+        return abort(404)
+    else :
+        return json.dumps({"index": index,"val": welcome[index]}), {"Content-Type": "application/json"}
 
 @app.errorhandler(404)
 def page_not_found(error) :
-    return render_templates('page_not_found.html'), 404
+    return templating.render_template('page_not_found.html'), 404
