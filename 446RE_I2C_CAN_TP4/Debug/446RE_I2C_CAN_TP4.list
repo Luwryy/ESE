@@ -1086,8 +1086,8 @@ int main(void)
   CAN_TxData[0] = 45;
  80009a0:	232d      	movs	r3, #45	; 0x2d
  80009a2:	f887 3020 	strb.w	r3, [r7, #32]
-  CAN_TxData[1] = 0;
- 80009a6:	2300      	movs	r3, #0
+  CAN_TxData[1] = 1;
+ 80009a6:	2301      	movs	r3, #1
  80009a8:	f887 3021 	strb.w	r3, [r7, #33]	; 0x21
 
   //bmp_temp_read(&bmp280);

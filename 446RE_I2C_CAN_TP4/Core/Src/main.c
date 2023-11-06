@@ -140,7 +140,7 @@ int main(void)
   CAN_Header.StdId = 0x061;
 
   CAN_TxData[0] = 45;
-  CAN_TxData[1] = 0;
+  CAN_TxData[1] = 1;
 
   //bmp_temp_read(&bmp280);
   //bmp_press_read(&bmp280);    */
