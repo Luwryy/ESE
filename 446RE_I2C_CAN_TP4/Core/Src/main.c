@@ -163,6 +163,8 @@ int main(void)
 	  CAN_TxData[0] = CAN_TxData[0] % 180;*/
 	  CAN_TxData[0] = (uint8_t) ((bmp280.temp / 10) - 200);
 	  HAL_Delay(500);
+	  uint8_t mydata[5];
+	  HAL_UART_Receive(&huart1, mydata , 1, HAL_MAX_DELAY);
 	  //Shell_Loop();
     /* USER CODE END WHILE */
 
