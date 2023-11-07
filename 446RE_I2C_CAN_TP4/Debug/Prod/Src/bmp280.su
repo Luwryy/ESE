@@ -1,0 +1,8 @@
+../Prod/Src/bmp280.c:7:6:bmp_reset	24	static
+../Prod/Src/bmp280.c:16:6:bmp_id	24	static
+../Prod/Src/bmp280.c:37:6:bmp_config	24	static
+../Prod/Src/bmp280.c:50:6:bmp_calib_read	24	static
+../Prod/Src/bmp280.c:62:6:bmp_temp_read	24	static
+../Prod/Src/bmp280.c:106:6:bmp_press_read	24	static
+../Prod/Src/bmp280.c:152:9:bmp_compensate_T	40	static
+../Prod/Src/bmp280.c:171:9:bmp_compensate_P	352	static

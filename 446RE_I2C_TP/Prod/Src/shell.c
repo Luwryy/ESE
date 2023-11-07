@@ -10,6 +10,8 @@
 #include <string.h>
 #include "bmp280.h"
 
+#define PC_UART
+
 uint8_t prompt[]="user@Nucleo-STM32G474RET6>>";
 uint8_t started[]=
 		"\r\n*-----------------------------*"
@@ -31,8 +33,12 @@ int		 	argc = 0;
 char*		token;
 int 		newCmdReady = 0;
 
+#ifdef PI_UART
 UART_HandleTypeDef * uartShell = &huart1;
-
+#endif
+#ifdef PC_UART
+UART_HandleTypeDef * uartShell = &huart2;
+#endif
 
 
 /**

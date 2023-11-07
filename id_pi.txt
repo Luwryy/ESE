@@ -1,3 +1,12 @@
 ssh guigui3@192.168.88.123
 user : guigui3
 mdp : guigui
+
+2nd user : cloclo
+mdp : guigui
+
+
+source bin/activate
+FLASK_APP=hello.py FLASK_ENV=devevelopment flask run --host 0.0.0.0
+app route permet de donner le chemin par rapport à l'adresse principal du serveur
+int:index permet rajouter un argument de fonction au chemin de l'adresse web
