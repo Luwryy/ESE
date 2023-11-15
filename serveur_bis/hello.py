@@ -45,10 +45,14 @@ def api_request(path=None):
                 "data" : request.get_json(),
                 }
     if request.method == 'GET':
-        if path == 'welcome/' :
+        if path == 'temp' :
+            print("ok")
+            nucleo64.write("0".encode('utf-8'))
+            temperature = nucleo64.read()
             resp["GET"] = {
-                "data" : request.get_json(),
+                "temperature" : hex(ord(temperature)),
                 }
+            print(hex(ord(temperature)))
         else :
             resp["GET"] = {
                 "data" : request.get_json(),

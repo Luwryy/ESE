@@ -49,6 +49,7 @@
 
 /* USER CODE BEGIN PV */
 h_bmp280_t bmp280;
+uint8_t huartRX_Value;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -65,6 +66,15 @@ int _write(int file, char *ptr, int len) {
 	}
 
 	return len;
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart->Instance == USART2){
+		if(huartRX_Value == '0'){
+			HAL_UART_Transmit_IT(huart, (uint8_t *) 0x08, 1);
+		}
+	}
 }
 /* USER CODE END PFP */
 
@@ -164,7 +174,7 @@ int main(void)
 	  CAN_TxData[0] = (uint8_t) ((bmp280.temp / 10) - 200);
 	  HAL_Delay(500);
 	  uint8_t mydata[5];
-	  HAL_UART_Receive(&huart1, mydata , 1, HAL_MAX_DELAY);
+	  HAL_UART_Receive_IT(&huart2, &huartRX_Value, 1);
 	  //Shell_Loop();
     /* USER CODE END WHILE */
 
