@@ -4,6 +4,7 @@
 import serial
 from flask import *
 import json
+from string import *
 
 app = Flask(__name__)
 
@@ -47,16 +48,20 @@ def api_request(path=None):
     if request.method == 'GET':
         if path == 'temp' :
             print("ok")
-            nucleo64.write("0".encode('utf-8'))
-            temperature = nucleo64.read()
+            nucleo64.write("0".encode('ascii'))
+            temperature = nucleo64.read(1)
+            print(int.from_bytes(temperature,"big"))
+#             print(len(temperature.decode('ascii')))
+#             print(int(temperature.decode('ascii'),base = 16))
+            #print(atoi(temperature.decode('utf-8')))
             resp["GET"] = {
-                "temperature" : hex(ord(temperature)),
+                "temperature" : int.from_bytes(temperature,"big"),
                 }
-            print(hex(ord(temperature)))
         else :
             resp["GET"] = {
                 "data" : request.get_json(),
                 }
+        temperature = 0
     return jsonify(resp)
 
 @app.route("/centre")
