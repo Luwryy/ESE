@@ -33,6 +33,9 @@ int		 	argc = 0;
 char*		token;
 int 		newCmdReady = 0;
 
+uint8_t huartRX_Value;
+uint8_t huartTX_Value;
+
 #ifdef PI_UART
 UART_HandleTypeDef * uartShell = &huart1;
 #endif
@@ -151,8 +154,15 @@ void Shell_Loop(void){
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart){
-	uartRxReceived = 1;
-	HAL_UART_Receive_IT(uartShell, uartRxBuffer, UART_RX_BUFFER_SIZE);
+	if(huart->Instance == USART2){
+		uartRxReceived = 1;
+		HAL_UART_Receive_IT(uartShell, uartRxBuffer, UART_RX_BUFFER_SIZE);
+	}
+	if(huart->Instance == USART1){
+		if(huartRX_Value == '0'){
+			HAL_UART_Transmit(huart, &huartTX_Value, 1, HAL_MAX_DELAY);
+		}
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
