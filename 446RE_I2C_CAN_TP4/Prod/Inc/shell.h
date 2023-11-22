@@ -21,6 +21,8 @@ void Shell_Loop(void);
 
 int number_interpretor(uint8_t * number_string);
 
+extern uint8_t huartRX_Value;
+extern uint8_t huartTX_Value;
 #endif /* INC_MYLIBS_SHELL_H_ */
 
 

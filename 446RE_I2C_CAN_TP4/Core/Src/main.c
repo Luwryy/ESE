@@ -60,9 +60,9 @@ int _write(int file, char *ptr, int len) {
 	for (DataIdx = 0; DataIdx < len; DataIdx++) {
 		HAL_UART_Transmit(&huart2, (uint8_t *) ptr++, 1, HAL_MAX_DELAY);
 	}
-	for (DataIdx = 0; DataIdx < len; DataIdx++) {
+	/*for (DataIdx = 0; DataIdx < len; DataIdx++) {
 		HAL_UART_Transmit(&huart1, (uint8_t *) ptr++, 1, HAL_MAX_DELAY);
-	}
+	}*/
 
 	return len;
 }
@@ -161,10 +161,12 @@ int main(void)
 	  }
 	  /*CAN_TxData[0] += 10;
 	  CAN_TxData[0] = CAN_TxData[0] % 180;*/
-	  CAN_TxData[0] = (uint8_t) ((bmp280.temp / 10) - 200);
+	  CAN_TxData[0] = (uint8_t) ((bmp280.temp / 10) - 200); //envoie la consigne au MPP en ecart de 10eme de degres à l
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	//a la temperature de reference qui est 20 degres
 	  HAL_Delay(500);
-	  uint8_t mydata[5];
-	  HAL_UART_Receive(&huart1, mydata , 1, HAL_MAX_DELAY);
+	  huartTX_Value = (uint8_t) (bmp280.temp/100);
+	  printf("%d/r/n",huartTX_Value);
+	  HAL_UART_Receive_IT(&huart1, &huartRX_Value, 1);
 	  //Shell_Loop();
     /* USER CODE END WHILE */
 
