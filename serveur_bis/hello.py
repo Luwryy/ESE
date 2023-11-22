@@ -63,10 +63,3 @@ def api_request(path=None):
                 }
         temperature = 0
     return jsonify(resp)
-
-@app.route("/centre")
-def centre():
-    nucleo64.write("0".encode('utf-8'))
-    nucleo64.write("1".encode('utf-8'))
-    nucleo64.write("9".encode('utf-8'))
-    return '',204 
